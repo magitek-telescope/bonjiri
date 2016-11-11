@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Electron App Frame</title>
+    <style media="screen">
+        html,body{
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Lato;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        #app{
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        nav{
+            width: 200px;
+            height: 100%;
+
+            color: #fff;
+            background: #4D394B;
+        }
+
+        nav h1{
+          margin: 5px;
+        }
+
+        nav ul{
+          margin: 0;
+          padding: 0;
+
+          list-style: none;
+          position: relative;
+
+          height: 100%;
+        }
+
+        nav .panel{
+          margin: 0;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+
+          cursor: pointer;
+
+          position: relative;
+        }
+
+        nav .panel:hover{
+          background: rgba(255, 255, 255, 0.025);
+        }
+
+        nav .panel img{
+          width: 36px;
+          height: 36px;
+          margin-right: 5px;
+          background: #fff;
+
+          border-radius: 5px;
+        }
+
+        nav .panel.ui-parts{
+          opacity: 0.8;
+        }
+
+        nav .panel.ui-parts:hover{
+          background: transparent;
+          opacity: 1.0;
+        }
+
+        nav .panel.ui-parts img{
+          background: transparent;
+        }
+
+        nav .panel.ui-parts.setting{
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+
+        nav .panel .info strong{
+          font-size: 14px;
+          font-weight: bold;
+        }
+
+        nav .panel .info span{
+          display: block;
+          font-size: 12px;
+          opacity: 0.5;
+        }
+
+        nav .panel .badge{
+          position: absolute;
+          left: 38px;
+          top: 2px;
+
+          width: 14px;
+          height: 14px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          font-size: 10px;
+          font-weight: bold;
+
+          border-radius: 50%;
+
+          color: #fff;
+          background: linear-gradient(#FF6060, #E65555);
+          border: solid 1px #CB4141;
+        }
+
+        webview{
+          width: calc(100% - 200px);
+          height: 100%;
+          display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <nav>
+        <!-- <h1>Bonjiri</h1> -->
+        <ul>
+          <li class="panel" data-id="1">
+            <img src="./assets/icon_01.png" alt="">
+            <div class="info">
+              <strong>Madoka</strong>
+              <span>kanamemadoka.slack.com</span>
+            </div>
+            <div class="badge">1</div>
+          </li>
+
+          <li class="panel" data-id="2">
+            <img src="./assets/icon_02.png" alt="">
+            <div class="info">
+              <strong>Homura</strong>
+              <span>akemihomura.slack.com</span>
+            </div>
+          </li>
+
+          <li class="panel" data-id="3">
+            <img src="./assets/icon_03.png" alt="">
+            <div class="info">
+              <strong>Sayaka</strong>
+              <span>mikisayaka.slack.com</span>
+            </div>
+          </li>
+
+          <li class="panel" data-id="4">
+            <img src="./assets/icon_04.png" alt="">
+            <div class="info">
+              <strong>Kyoko</strong>
+              <span>sakurakyoko.slack.com</span>
+            </div>
+          </li>
+
+          <li class="panel" data-id="5">
+            <img src="./assets/icon_05.png" alt="">
+            <div class="info">
+              <strong>Mami</strong>
+              <span>tomoemami.slack.com</span>
+            </div>
+          </li>
+
+          <li class="panel ui-parts">
+            <img src="./assets/plus.svg" alt="">
+            <div class="info">
+              <strong>Add new Team</strong>
+            </div>
+          </li>
+
+          <li class="panel ui-parts setting">
+            <img src="./assets/gear.svg" alt="">
+            <div class="info">
+              <strong></strong>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <webview src="https://slack.com/" data-id="1"></webview>
+      <webview src="https://slack.com/" data-id="2"></webview>
+      <webview src="https://slack.com/" data-id="3"></webview>
+      <webview src="https://slack.com/" data-id="4"></webview>
+      <webview src="https://slack.com/" data-id="5"></webview>
+    </div>
+    <script>
+    // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
