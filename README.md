@@ -1,5 +1,5 @@
-# Bonjiri[WIP]
+# Bonjiri(Currently under development)
 
-:tada:
+![Image](./assets/screenshot.png)
 
 Bonjiri is Slack integrated management system for Electron.
