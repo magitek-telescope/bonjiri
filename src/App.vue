@@ -25,7 +25,9 @@ module.exports = {
     }
   },
   created: function(){
-    this.stores.ApplicationStore.activeTeam = this.stores.TeamsStore.getTeams()[0].id;
+    if(this.stores.TeamsStore.getTeams().length){
+      this.stores.ApplicationStore.activeTeam = this.stores.TeamsStore.getTeams()[0].id;      
+    }
   }
 }
 </script>

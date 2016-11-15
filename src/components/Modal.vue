@@ -11,9 +11,10 @@
           <input placeholder="Display name type here…" v-model="form.name">
         </p>
 
-        <p>
+        <p style="position:relative;">
           <label>Team ID</label>
           <input placeholder="Slack Team ID here…" v-model="form.domain">
+          <span class="suffix" style="position: absolute; right:0; bottom: 25px;">.slack.com</span>
         </p>
 
         <p>
@@ -30,20 +31,25 @@
 </template>
 
 <style lang="css" scoped>
+::-webkit-input-placeholder{
+  transition: all 0.3s ease-out;
+}
+
 #modal{
   width: 360px;
   height: 470px;
 
   position: absolute;
   top: calc(50% - 235px);
-  left: calc(50% - 200px);
+  left: calc(50% - 220px);
 
-  padding: 0 20px;
+  padding: 0 40px;
 
   background: #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
 
-  transition: opacity 0.2s ease-out;
+  transform: scaleY(0);
+  transition: all 0.2s ease-out;
 }
 
 #modal header{
@@ -68,11 +74,27 @@
 
   padding: 5px 0;
 
+  color: #53A5FC;
   font-size: 14px;
 
   border-bottom: solid 1px #B2B2B2;
   margin-bottom: 20px;
   outline: none;
+
+  transition: all 0.3s ease-out;
+}
+
+#modal .suffix{
+  color: #B2B2B2;
+  font-size: 14px;
+}
+
+#modal input:focus{
+  border-bottom: solid 1px #53A5FC;
+}
+
+#modal input:focus::-webkit-input-placeholder{
+  color: #53A5FC;;
 }
 
 #modal button{
@@ -107,9 +129,17 @@
   pointer-events: none;
 }
 
+#modal-area{
+  transition: opacity 0.3s ease-out;
+}
+
 #modal-area.show{
   opacity: 1.0;
   pointer-events: auto;
+}
+
+#modal-area.show #modal{
+  transform: scaleY(1.0);
 }
 
 </style>

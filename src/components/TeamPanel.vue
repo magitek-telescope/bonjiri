@@ -51,6 +51,9 @@
   display: block;
   font-size: 12px;
   opacity: 0.5;
+
+  width: 124px;
+  overflow: hidden;
 }
 
 .panel .badge{
@@ -85,7 +88,7 @@ module.exports = {
     }
   },
   methods: {
-    switchTeam: function(e){
+    switchTeam: function(){
       this.stores.ApplicationStore.activeTeam = this.teamdata.id;
       console.log(this.stores);
     }

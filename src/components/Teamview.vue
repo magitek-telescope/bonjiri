@@ -27,6 +27,9 @@ webview{
 </style>
 
 <script>
+
+/*globals openExternal */
+
 module.exports = {
   props: ["teamdata", "isshow"],
   data: () => {
@@ -41,12 +44,10 @@ module.exports = {
 
     webview.addEventListener("new-window", openExternal);
 
-    webview.addEventListener('did-stop-loading', ()=>{
+    webview.addEventListener("did-stop-loading", ()=>{
       // webview.openDevTools();
       webview.executeJavaScript(
-        `{
-          color:$("#col_channels_bg").css("backgroundColor")
-        }`,
+        "{color:$('#col_channels_bg').css('backgroundColor')}",
         false,
         function(color){
           const teamData = self.stores.TeamsStore.getTeams().map((team) => {

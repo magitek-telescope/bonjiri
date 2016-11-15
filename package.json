@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
+  "name": "bonjiri",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Slack統合管理ツール",
   "main": "main.js",
   "scripts": {
     "start": "electron .",

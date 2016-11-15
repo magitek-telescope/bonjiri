@@ -1,6 +1,5 @@
 const Vue = require("vue");
 const App = Vue.extend(require("./App.vue"));
-const Fetch = require("./utilitys/Fetch");
 
 // Stores
 
@@ -16,7 +15,7 @@ Vue.component("navigation", require("./components/Navigation.vue"));
 
 // Pages
 
-const app = new Vue({
-	el: "#app",
-	render: h => h(App)
+new Vue({
+  el: "#app",
+  render: h => h(App)
 });

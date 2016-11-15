@@ -1,7 +1,9 @@
 <template lang="html">
   <div class="noteam">
+
+    <h1>No Team.</h1>
     <p>
-      No Team.
+      Please add the first team from "Add Team" in the upper left of the window.
     </p>
   </div>
 </template>
@@ -19,9 +21,16 @@
 
   align-items: center;
   justify-content: center;
-
-  font-size: 60px;
-
+  flex-direction: column;
   filter: grayscale(100%);
+}
+
+h1{
+    font-size: 60px;
+    margin-bottom: 0;
+}
+
+p{
+  font-size: 20px;
 }
 </style>
