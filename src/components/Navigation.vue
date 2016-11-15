@@ -43,19 +43,14 @@ nav ul{
 module.exports = {
   data: () => {
     return {
-      stores: {
-        TeamsStore : require("../stores/TeamsStore.js"),
-        ApplicationStore : require("../stores/ApplicationStore.js")
-      }
+      stores: require("../stores/Stores.js")
     }
   },
   computed: {
     activeTeam: function(){
-      const t = this.stores.TeamsStore.getTeams().find((team) => {
+      return this.stores.TeamsStore.getTeams().find((team) => {
         return team.id == this.stores.ApplicationStore.activeTeam;
       });
-      console.log("ActiveTeam: " +t);
-      return t;
     }
   }
 }

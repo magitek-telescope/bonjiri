@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="noteam">
-
     <h1>No Team.</h1>
     <p>
       Please add the first team from "Add Team" in the upper left of the window.

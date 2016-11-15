@@ -50,11 +50,12 @@ module.exports = {
         "{color:$('#col_channels_bg').css('backgroundColor')}",
         false,
         function(color){
-          const teamData = self.stores.TeamsStore.getTeams().map((team) => {
-            if(team.id == self.teamdata.id) team.color = color;
-            return team;
-          })
-          self.stores.TeamsStore.setTeams(teamData);
+          self.stores.TeamsStore.setTeams(
+            self.stores.TeamsStore.getTeams().map((team) => {
+              if(team.id == self.teamdata.id) team.color = color;
+              return team;
+            })
+          );
         }
       );
     });

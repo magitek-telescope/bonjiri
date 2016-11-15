@@ -1,4 +1,1 @@
-module.exports = {
-  activeTeam : "",
-  isShowModal: false
-};
+module.exports = {};

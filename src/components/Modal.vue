@@ -159,7 +159,7 @@ module.exports = {
 
   methods: {
     addTeam: function(e){
-        e.preventDefault();
+      e.preventDefault();
       const formData = this.form;
       this.form = {name: "",domain: "",icon: ""};
 
@@ -176,7 +176,7 @@ module.exports = {
         )
       );
 
-      this.stores.ApplicationStore.activeTeam = formData.name;
+      this.stores.TeamsStore.setActiveTeam(formData.name);
       this.stores.ModalStore.setVisible(false);
     },
 

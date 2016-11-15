@@ -89,8 +89,7 @@ module.exports = {
   },
   methods: {
     switchTeam: function(){
-      this.stores.ApplicationStore.activeTeam = this.teamdata.id;
-      console.log(this.stores);
+      this.stores.TeamsStore.setActiveTeam(this.teamdata.id);
     }
   }
 }

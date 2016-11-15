@@ -46,34 +46,6 @@
   font-size: 14px;
   font-weight: bold;
 }
-
-.panel .info span{
-  display: block;
-  font-size: 12px;
-  opacity: 0.5;
-}
-
-.panel .badge{
-  position: absolute;
-  left: 38px;
-  top: 2px;
-
-  width: 14px;
-  height: 14px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 10px;
-  font-weight: bold;
-
-  border-radius: 50%;
-
-  color: #fff;
-  background: linear-gradient(#FF6060, #E65555);
-  border: solid 1px #CB4141;
-}
 </style>
 
 <script>
@@ -86,7 +58,6 @@ module.exports = {
 
   methods: {
     showModal: function(){
-      console.log(this);
       this.stores.ModalStore.setVisible(true);
     }
   }
