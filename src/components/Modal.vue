@@ -15,7 +15,7 @@
         <p style="position:relative;">
           <label>Team ID</label>
           <input placeholder="Slack Team ID here…" v-model="form.domain">
-          <span class="suffix" style="position: absolute; right:0; bottom: 25px;">.slack.com</span>
+          <span class="suffix" style="position: absolute; right:0; top: 35px;">.slack.com</span>
           <span class="error" v-show="errors.domain">{{ errors.domain }}</span>
         </p>
 
