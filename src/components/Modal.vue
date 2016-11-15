@@ -8,18 +8,21 @@
       <form v-on:submit.prevent="addTeam">
         <p>
           <label>Team Name</label>
-          <input placeholder="Display name type here…" v-model="form.name" required>
+          <input placeholder="Display name type here…" v-model="form.name">
+          <span class="error" v-show="errors.name">{{ errors.name }}</span>
         </p>
 
         <p style="position:relative;">
           <label>Team ID</label>
-          <input placeholder="Slack Team ID here…" v-model="form.domain" required>
+          <input placeholder="Slack Team ID here…" v-model="form.domain">
           <span class="suffix" style="position: absolute; right:0; bottom: 25px;">.slack.com</span>
+          <span class="error" v-show="errors.domain">{{ errors.domain }}</span>
         </p>
 
         <p>
           <label>Team Icon URL</label>
-          <input placeholder="Icon URL here…" v-model="form.icon" required>
+          <input placeholder="Icon URL here…" v-model="form.icon">
+          <span class="error" v-show="errors.icon">{{ errors.icon }}</span>
         </p>
 
         <p style="text-align:center;">
@@ -37,10 +40,10 @@
 
 #modal{
   width: 360px;
-  height: 470px;
+  height: 480px;
 
   position: absolute;
-  top: calc(50% - 235px);
+  top: calc(50% - 240px);
   left: calc(50% - 220px);
 
   padding: 0 40px;
@@ -55,7 +58,11 @@
 #modal header{
   width: 100%;
   text-align: center;
-  margin: 25px auto;
+  margin: 20px auto;
+}
+
+#modal p{
+  margin-bottom: 25px;
 }
 
 #modal label{
@@ -78,7 +85,6 @@
   font-size: 14px;
 
   border-bottom: solid 1px #B2B2B2;
-  margin-bottom: 20px;
   outline: none;
 
   transition: all 0.3s ease-out;
@@ -87,6 +93,11 @@
 #modal .suffix{
   color: #B2B2B2;
   font-size: 14px;
+}
+
+#modal .error{
+  color: #F77644;
+  font-size: 12px;
 }
 
 #modal input:focus{
@@ -153,15 +164,41 @@ module.exports = {
         domain : "",
         icon   : ""
       },
+      errors: {
+        name   : "",
+        domain : "",
+        icon   : ""
+      },
       stores: require("../stores/Stores.js")
     }
   },
 
   methods: {
+    validation: function(){
+      let flag = true;
+      const formData = this.form;
+
+      Object.keys(this.errors).map((name) =>{
+        this.errors[name] = "";
+      })
+
+      Object.keys(formData).map((name) => {
+        if(!formData[name]){
+          this.errors[name] = `Please enter team ${name}.`;
+          flag = false;
+        }
+      });
+
+      return flag;
+    },
+
     addTeam: function(e){
       e.preventDefault();
+      if(!this.validation()) return;
+
       const formData = this.form;
       this.form = {name: "",domain: "",icon: ""};
+      this.errors = {name: "",domain: "",icon: ""};
 
       this.stores.TeamsStore.setTeams(
         this.stores.TeamsStore.getTeams().concat(
@@ -181,6 +218,9 @@ module.exports = {
     },
 
     hideModal: function(){
+      this.form   = {name: "",domain: "",icon: ""};
+      this.errors = {name: "",domain: "",icon: ""};
+
       this.stores.ModalStore.setVisible(false);
     }
   }
