@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 .teamview{
   width: calc(100% - 200px);
   height: 100%;

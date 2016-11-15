@@ -1,7 +1,7 @@
 <template lang="html">
-  <div id="modal-area" v-bind:class="stores.ApplicationStore.isShowModal ? 'show' : 'hide'">
-    <div id="modal-background" v-on:click="hideModal" v-show="stores.ApplicationStore.isShowModal"></div>
-    <div id="modal" v-bind:style="'opacity:' + (stores.ApplicationStore.isShowModal ? '1' : '0' + ';')">
+  <div id="modal-area" v-bind:class="stores.ModalStore.getVisible() ? 'show' : 'hide'">
+    <div id="modal-background" v-on:click="hideModal" v-show="stores.ModalStore.getVisible()"></div>
+    <div id="modal" v-bind:style="'opacity:' + (stores.ModalStore.getVisible() ? '1' : '0' + ';')">
       <header>
         <img :src="'./assets/logo.png'" alt="" height="80">
       </header>
@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 ::-webkit-input-placeholder{
   transition: all 0.3s ease-out;
 }
@@ -149,8 +149,9 @@ module.exports = {
   data: () => {
     return {
       form: {
-        name: "",
-        domain: ""
+        name   : "",
+        domain : "",
+        icon   : ""
       },
       stores: require("../stores/Stores.js")
     }
@@ -158,26 +159,29 @@ module.exports = {
 
   methods: {
     addTeam: function(e){
-      e.preventDefault();
-      console.log("Teams:", this.stores.TeamsStore.getTeams());
+        e.preventDefault();
+      const formData = this.form;
+      this.form = {name: "",domain: "",icon: ""};
+
       this.stores.TeamsStore.setTeams(
         this.stores.TeamsStore.getTeams().concat(
           [{
-            id     : this.form.name,
-            name   : this.form.name,
-            domain : `${this.form.domain}.slack.com`,
-            icon   : this.form.icon,
+            id     : formData.name,
+            name   : formData.name,
+            domain : `${formData.domain}.slack.com`,
+            icon   : formData.icon,
             color  : "#4D394B",
             unread : 0
           }]
         )
       );
-      console.log("Teams:", this.stores.TeamsStore.getTeams());
-      this.stores.ApplicationStore.isShowModal = false;
+
+      this.stores.ApplicationStore.activeTeam = formData.name;
+      this.stores.ModalStore.setVisible(false);
     },
 
     hideModal: function(){
-      this.stores.ApplicationStore.isShowModal = false;
+      this.stores.ModalStore.setVisible(false);
     }
   }
 }

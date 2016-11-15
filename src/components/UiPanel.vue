@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 .panel{
   margin: 0;
   padding: 10px;
@@ -80,16 +80,14 @@
 module.exports = {
   data: () => {
     return {
-      stores: {
-        ApplicationStore: require("../stores/ApplicationStore.js")
-      }
+      stores: require("../stores/Stores.js")
     }
   },
 
   methods: {
     showModal: function(){
       console.log(this);
-      this.stores.ApplicationStore.isShowModal = true;
+      this.stores.ModalStore.setVisible(true);
     }
   }
 }

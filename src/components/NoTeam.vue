@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 .noteam{
   width: calc(100% - 200px);
   height: 100%;

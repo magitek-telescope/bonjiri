@@ -12,7 +12,7 @@
   </nav>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 nav{
     width: 200px;
     height: calc(100% - 18px);

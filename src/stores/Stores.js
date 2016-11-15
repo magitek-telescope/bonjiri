@@ -1,4 +1,5 @@
 module.exports = {
-  ApplicationStore: require("./ApplicationStore"),
-  TeamsStore: require("./TeamsStore")
+  TeamsStore: require("./TeamsStore"),
+  ModalStore: require("./ModalStore"),
+  ApplicationStore: require("./ApplicationStore")
 };

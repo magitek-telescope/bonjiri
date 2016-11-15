@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 
 .panel{
   margin: 0;
