@@ -10,7 +10,6 @@
 </template>
 
 <style scoped>
-
 .panel{
   margin: 0;
   padding: 10px;

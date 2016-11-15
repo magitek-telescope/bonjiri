@@ -8,18 +8,18 @@
       <form v-on:submit.prevent="addTeam">
         <p>
           <label>Team Name</label>
-          <input placeholder="Display name type here…" v-model="form.name">
+          <input placeholder="Display name type here…" v-model="form.name" required>
         </p>
 
         <p style="position:relative;">
           <label>Team ID</label>
-          <input placeholder="Slack Team ID here…" v-model="form.domain">
+          <input placeholder="Slack Team ID here…" v-model="form.domain" required>
           <span class="suffix" style="position: absolute; right:0; bottom: 25px;">.slack.com</span>
         </p>
 
         <p>
           <label>Team Icon URL</label>
-          <input placeholder="Icon URL here…" v-model="form.icon">
+          <input placeholder="Icon URL here…" v-model="form.icon" required>
         </p>
 
         <p style="text-align:center;">

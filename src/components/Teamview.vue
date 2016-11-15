@@ -41,12 +41,11 @@ module.exports = {
     const self = this;
     const $ = e=>document.querySelector(e);
     const webview = $(`.teamview[data-id='${this.teamdata.id}'] webview`);
-    const checkUnread = ()=>{
+    const checkUnread = () => {
       webview.executeJavaScript(
         "{unread:document.title}",
         false,
         function(title){
-          console.log(title);
           self.stores.TeamsStore.setTeams(
             self.stores.TeamsStore.getTeams().map((team) => {
               if(team.id == self.teamdata.id) team.unread = title.slice(0,1) == "!";
@@ -60,7 +59,6 @@ module.exports = {
     webview.addEventListener("new-window", openExternal);
 
     webview.addEventListener("did-stop-loading", ()=>{
-      // webview.openDevTools();
       webview.executeJavaScript(
         "{color:$('#col_channels_bg').css('backgroundColor')}",
         false,
