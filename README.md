@@ -1,6 +1,6 @@
 # Bonjiri
 
-![Image](./assets/screenshot.png)
+![Image](./raw_resources/screenshot.png)
 
 (Currently under development)
 
