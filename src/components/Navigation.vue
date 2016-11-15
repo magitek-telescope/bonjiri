@@ -49,7 +49,7 @@ module.exports = {
   computed: {
     activeTeam: function(){
       return this.stores.TeamsStore.getTeams().find((team) => {
-        return team.id == this.stores.ApplicationStore.activeTeam;
+        return team.id == this.stores.TeamsStore.getActiveTeam();
       });
     }
   }

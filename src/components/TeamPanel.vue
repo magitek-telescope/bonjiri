@@ -5,7 +5,7 @@
       <strong>{{ teamdata.name }}</strong>
       <span>{{ teamdata.domain }}</span>
     </div>
-    <div class="badge" v-show="teamdata.unread">{{ teamdata.unread }}</div>
+    <div class="badge" v-show="teamdata.unread"> </div>
   </div>
 </template>
 
@@ -74,7 +74,7 @@
   border-radius: 50%;
 
   color: #fff;
-  background: linear-gradient(#FF6060, #E65555);
+  background: linear-gradient(rgba(255,0,0,0.8), rgba(255,0,0,0.8));
   border: solid 1px #CB4141;
 }
 </style>
