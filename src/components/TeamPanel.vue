@@ -1,0 +1,94 @@
+<template lang="html">
+  <div class="panel" :data-id=" teamdata.id " v-on:click="switchTeam">
+    <img :src="teamdata.icon || ''" alt="">
+    <div class="info">
+      <strong>{{ teamdata.name }}</strong>
+      <span>{{ teamdata.domain }}</span>
+    </div>
+    <div class="badge" v-show="teamdata.unread">{{ teamdata.unread }}</div>
+  </div>
+</template>
+
+<style lang="css" scoped>
+
+.panel{
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.panel:hover{
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.panel img{
+  width: 36px;
+  height: 36px;
+  margin-right: 5px;
+  background: #fff;
+
+  border-radius: 5px;
+}
+
+.panel.ui-parts.setting{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.panel .info strong{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.panel .info span{
+  display: block;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.panel .badge{
+  position: absolute;
+  left: 38px;
+  top: 2px;
+
+  width: 14px;
+  height: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 10px;
+  font-weight: bold;
+
+  border-radius: 50%;
+
+  color: #fff;
+  background: linear-gradient(#FF6060, #E65555);
+  border: solid 1px #CB4141;
+}
+</style>
+
+<script>
+module.exports = {
+  props: ["teamdata"],
+  data: () => {
+    return {
+      stores: require("../stores/Stores.js")
+    }
+  },
+  methods: {
+    switchTeam: function(e){
+      this.stores.ApplicationStore.activeTeam = this.teamdata.id;
+      console.log(this.stores);
+    }
+  }
+}
+</script>
