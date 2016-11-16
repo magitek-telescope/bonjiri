@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="panel" :data-id=" teamdata.id " v-on:click="switchTeam">
-    <img :src="teamdata.icon || ''" alt="">
+  <div class="panel" :data-id="teamdata.id" v-on:click="switchTeam">
+    <img :src="teamdata.icon || ''" alt="Team Icon">
     <div class="info">
       <strong>{{ teamdata.name }}</strong>
       <span>{{ teamdata.domain }}</span>

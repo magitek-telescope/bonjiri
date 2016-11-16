@@ -53,6 +53,8 @@
 
   transform: scaleY(0);
   transition: all 0.2s ease-out;
+
+  -webkit-user-select: none;
 }
 
 #modal header{

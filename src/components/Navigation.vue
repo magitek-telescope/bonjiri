@@ -22,6 +22,8 @@ nav{
 
     color: #fff;
     transition: all 0.4s ease-out;
+
+    -webkit-user-select: none;
 }
 
 nav h1{
