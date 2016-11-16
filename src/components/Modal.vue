@@ -13,9 +13,18 @@
         </p>
 
         <p style="position:relative;">
-          <label>Team ID</label>
-          <input placeholder="Slack Team ID here…" v-model="form.domain">
-          <span class="suffix" style="position: absolute; right:0; top: 35px;">.slack.com</span>
+          <label>Team Domain</label>
+
+          <select v-model="form.kind">
+            <option value="slack">Slack</option>
+            <option value="discord">Discord</option>
+          </select>
+
+          <input :placeholder="form.kind == 'slack' ? 'Slack Team ID' : 'discord-id'" v-model="form.domain" :class="form.kind == 'slack' ? 'slack-form' : 'discord-form'">
+
+          <span class="suffix" style="position: absolute; right:0; top: 34px;" v-if="form.kind == 'slack'">.slack.com</span>
+          <span class="suffix" style="position: absolute; left:0; top: 34px;" v-if="form.kind == 'discord'">discordapp.com/</span>
+
           <span class="error" v-show="errors.domain">{{ errors.domain }}</span>
         </p>
 
@@ -55,6 +64,8 @@
   transition: all 0.2s ease-out;
 
   -webkit-user-select: none;
+
+  z-index: 100;
 }
 
 #modal header{
@@ -89,7 +100,7 @@
   border-bottom: solid 1px #B2B2B2;
   outline: none;
 
-  transition: all 0.3s ease-out;
+  transition: border-bottom color 0.3s ease-out;
 }
 
 #modal .suffix{
@@ -104,6 +115,17 @@
 
 #modal input:focus{
   border-bottom: solid 1px #53A5FC;
+}
+
+#modal select{
+  position: absolute;
+  top: 3px;
+  right: 0;
+}
+
+#modal input.discord-form{
+  padding-left: 103px;
+  width: calc(100% - 103px);
 }
 
 #modal input:focus::-webkit-input-placeholder{
@@ -144,6 +166,8 @@
 
 #modal-area{
   transition: opacity 0.3s ease-out;
+
+  z-index: 50;
 }
 
 #modal-area.show{
@@ -164,7 +188,8 @@ module.exports = {
       form: {
         name   : "",
         domain : "",
-        icon   : ""
+        icon   : "",
+        kind   : "slack"
       },
       errors: {
         name   : "",
@@ -199,7 +224,7 @@ module.exports = {
       if(!this.validation()) return;
 
       const formData = this.form;
-      this.form = {name: "",domain: "",icon: ""};
+      this.form = {name: "",domain: "",icon: "",kind: "slack"};
       this.errors = {name: "",domain: "",icon: ""};
 
       this.stores.TeamsStore.setTeams(
@@ -220,7 +245,7 @@ module.exports = {
     },
 
     hideModal: function(){
-      this.form   = {name: "",domain: "",icon: ""};
+      this.form   = {name: "",domain: "",icon: "",kind: "slack"};
       this.errors = {name: "",domain: "",icon: ""};
 
       this.stores.ModalStore.setVisible(false);
