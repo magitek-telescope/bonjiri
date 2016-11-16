@@ -207,7 +207,7 @@ module.exports = {
           [{
             id     : formData.name,
             name   : formData.name,
-            domain : `${formData.domain}.slack.com`,
+            domain : formData.domain /*`${formData.domain}.slack.com`*/,
             icon   : formData.icon,
             color  : "#4D394B",
             unread : 0

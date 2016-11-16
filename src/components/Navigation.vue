@@ -24,6 +24,8 @@ nav{
     transition: all 0.4s ease-out;
 
     -webkit-user-select: none;
+
+    z-index: 10;
 }
 
 nav h1{
