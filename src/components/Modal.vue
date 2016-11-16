@@ -3,7 +3,8 @@
     <div id="modal-background" v-on:click="hideModal" v-show="stores.ModalStore.getVisible()"></div>
     <div id="modal" v-bind:style="'opacity:' + (stores.ModalStore.getVisible() ? '1' : '0' + ';')">
       <header>
-        <img :src="'./assets/logo.png'" alt="" height="80">
+        <!-- <img :src="'./assets/logo.png'" alt="" height="80"> -->
+        Bonjiri
       </header>
       <form v-on:submit.prevent="addTeam">
         <p>
@@ -71,7 +72,14 @@
 #modal header{
   width: 100%;
   text-align: center;
-  margin: 20px auto;
+  padding: 25px 40px;
+  background: linear-gradient(-30deg, #5A9FBE, #7474C7);
+  margin-left: -40px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 3px 0 rgba(0,0,0,0.163);
+  margin-bottom: 10px;
 }
 
 #modal p{
@@ -232,9 +240,9 @@ module.exports = {
           [{
             id     : formData.name,
             name   : formData.name,
-            domain : formData.domain /*`${formData.domain}.slack.com`*/,
+            domain : formData.kind == "slack" ? `${formData.domain}.slack.com` : `discordapp.com/${formData.domain}`,
             icon   : formData.icon,
-            color  : "#4D394B",
+            color  : formData.kind == "slack" ? "#4D394B" : "#2E3136",
             unread : 0
           }]
         )
