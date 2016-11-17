@@ -14,18 +14,18 @@
 
 <style scoped>
 nav{
-    width: 200px;
-    height: calc(100% - 18px);
-    padding-top: 18px;
+  width: 200px;
+  height: calc(100% - 18px);
+  padding-top: 18px;
 
-    overflow: auto;
+  overflow: auto;
 
-    color: #fff;
-    transition: all 0.4s ease-out;
+  color: #fff;
+  transition: all 0.4s ease-out;
 
-    -webkit-user-select: none;
+  -webkit-user-select: none;
 
-    z-index: 10;
+  z-index: 10;
 }
 
 nav h1{

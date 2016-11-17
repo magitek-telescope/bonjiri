@@ -25,8 +25,8 @@
 }
 
 h1{
-    font-size: 60px;
-    margin-bottom: 0;
+  font-size: 60px;
+  margin-bottom: 0;
 }
 
 p{
