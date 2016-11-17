@@ -1,7 +1,7 @@
 {
   "name": "bonjiri",
   "version": "1.0.0",
-  "description": "Slack統合管理ツール",
+  "description": "Communication tools integrated management system.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -15,14 +15,7 @@
     "test": "npm run lint",
     "test:safe": "npm run lint; exit 0"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
+  "repository": "https://github.com/potato4d/bonjiri",
   "author": "Potato4d",
   "license": "MIT",
   "devDependencies": {
