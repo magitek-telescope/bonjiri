@@ -11,13 +11,12 @@
 .panel{
   margin: 0;
   padding: 10px;
+
   display: flex;
   align-items: center;
   justify-content: flex-start;
 
   cursor: pointer;
-
-  position: relative;
 
   opacity: 0.8;
 }
@@ -31,15 +30,7 @@
   width: 36px;
   height: 36px;
   margin-right: 5px;
-  background: transparent;
-
   border-radius: 5px;
-}
-
-.panel.setting{
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 
 .panel .info strong{

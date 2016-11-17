@@ -13,6 +13,7 @@
 .panel{
   margin: 0;
   padding: 10px;
+  
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -33,12 +34,6 @@
   background: #fff;
 
   border-radius: 5px;
-}
-
-.panel.ui-parts.setting{
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 
 .panel .info strong{
