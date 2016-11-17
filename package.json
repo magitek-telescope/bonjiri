@@ -8,7 +8,7 @@
     "lint": "eslint ./src/ --ext=js,vue",
     "lint:fix": "eslint ./src --fix --ext=js,vue",
     "lint:safe": "eslint ./src --ext=js,vue ;exit 0",
-    "icon"     : "iconutil -c icns ./raw_resources/bonjiri.iconset/",
+    "icon": "iconutil -c icns ./raw_resources/bonjiri.iconset/",
     "packaging": "electron-packager . bonjiri --platform=darwin --icon=./raw_resources/bonjiri.icns",
     "build": "webpack --colors --progress --hide-modules --config webpack.config.js",
     "watch": "webpack --colors --progress --hide-modules --watch --config webpack.config.js",

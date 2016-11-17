@@ -2,10 +2,7 @@
   <div id="modal-area" v-bind:class="stores.ModalStore.getVisible() ? 'show' : 'hide'">
     <div id="modal-background" v-on:click="hideModal" v-show="stores.ModalStore.getVisible()"></div>
     <div id="modal" v-bind:style="'opacity:' + (stores.ModalStore.getVisible() ? '1' : '0' + ';')">
-      <header>
-        <!-- <img :src="'./assets/logo.png'" alt="" height="80"> -->
-        Bonjiri
-      </header>
+      <header>Bonjiri</header>
       <form v-on:submit.prevent="addTeam">
         <p>
           <label>Team Name</label>
@@ -23,8 +20,8 @@
 
           <input :placeholder="form.kind == 'slack' ? 'Slack Team ID' : 'discord-id'" v-model="form.domain" :class="form.kind == 'slack' ? 'slack-form' : 'discord-form'">
 
-          <span class="suffix" style="position: absolute; right:0; top: 34px;" v-if="form.kind == 'slack'">.slack.com</span>
-          <span class="suffix" style="position: absolute; left:0; top: 34px;" v-if="form.kind == 'discord'">discordapp.com/</span>
+          <span class="suffix" v-if="form.kind == 'slack'">.slack.com</span>
+          <span class="prefix" v-if="form.kind == 'discord'">discordapp.com/</span>
 
           <span class="error" v-show="errors.domain">{{ errors.domain }}</span>
         </p>
@@ -111,9 +108,22 @@
   transition: border-bottom color 0.3s ease-out;
 }
 
+#modal .prefix,
 #modal .suffix{
   color: #B2B2B2;
   font-size: 14px;
+}
+
+#modal .prefix{
+  position: absolute;
+  left:0;
+  top: 34px;
+}
+
+#modal .suffix{
+  position: absolute;
+  right:0;
+  top: 34px;
 }
 
 #modal .error{
