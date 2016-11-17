@@ -17,6 +17,8 @@
   <body>
     <div id="app"></div>
     <script>
+      const {webFrame} = require('electron');
+      webFrame.setZoomLevelLimits(1, 1);
       const openExternal = require("./src/utilitys/OpenExternal");
     </script>
     <script src="./bundle.js"></script>
