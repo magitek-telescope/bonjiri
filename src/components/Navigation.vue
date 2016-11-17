@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <nav id="main-navigation" :style="'background:' + (activeTeam !== undefined ? activeTeam.color : '#4D394B;') ">
     <ul>
       <li v-for="team in stores.TeamsStore.getTeams()">

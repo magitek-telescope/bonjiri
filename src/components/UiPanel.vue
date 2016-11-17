@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="panel" v-on:click="showModal">
     <img :src="'./assets/plus.svg'" alt="Add New Team">
     <div class="info">

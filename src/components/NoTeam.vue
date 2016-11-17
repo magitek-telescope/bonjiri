@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="noteam">
     <h1>No Team.</h1>
     <p>

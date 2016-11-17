@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class="isshow ? 'teamview show' : 'teamview hide'" :data-id="teamdata.id" :data-isdiscord="teamdata.domain.indexOf('discordapp') != -1 ? '1' : '0'">
     <webview allowpopups autosize="on" :src="'https://'+teamdata.domain"></webview>
   </div>

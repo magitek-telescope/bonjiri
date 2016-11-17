@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="panel" :data-id="teamdata.id" v-on:click="switchTeam">
     <img :src="teamdata.icon || ''" alt="Team Icon">
     <div class="info">

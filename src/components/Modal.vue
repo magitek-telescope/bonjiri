@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div id="modal-area" v-bind:class="stores.ModalStore.getVisible() ? 'show' : 'hide'">
     <div id="modal-background" v-on:click="hideModal" v-show="stores.ModalStore.getVisible()"></div>
     <div id="modal" v-bind:style="'opacity:' + (stores.ModalStore.getVisible() ? '1' : '0' + ';')">
