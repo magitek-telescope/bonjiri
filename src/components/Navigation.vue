@@ -28,10 +28,6 @@ nav{
   z-index: 10;
 }
 
-nav h1{
-  margin: 5px;
-}
-
 nav ul{
   margin: 0;
   padding: 0;
@@ -47,6 +43,7 @@ nav ul{
 module.exports = {
   data: () => {
     return {
+      dragging: null,
       stores: require("../stores/Stores.js")
     }
   },
@@ -55,6 +52,27 @@ module.exports = {
       return this.stores.TeamsStore.getTeams().find((team) => {
         return team.id == this.stores.TeamsStore.getActiveTeam();
       });
+    }
+  },
+  methods: {
+    dragstart: function(index){
+      // this.dragging = index;
+    },
+
+    dragenter: function(index){
+      /*
+      console.log("TeamA:", index);
+      console.log("TeamB:", this.dragging);
+      if(index == this.dragging) return;
+      const teams = this.stores.TeamsStore.getTeams();
+      const teamA = teams[index];
+      const teamB = teams[this.dragging];
+
+      teams[index]         = teamB;
+      teams[this.dragging] = teamA;
+
+      this.stores.TeamsStore.setTeams(teams);
+      */
     }
   }
 }
