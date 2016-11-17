@@ -209,6 +209,11 @@ module.exports = {
   },
 
   methods: {
+    resetForm: function(){
+      this.form = {name: "",domain: "",icon: "",kind: "slack"};
+      this.errors = {name: "",domain: "",icon: ""};
+    },
+
     validation: function(){
       let flag = true;
       const formData = this.form;
@@ -218,12 +223,10 @@ module.exports = {
       })
 
       Object.keys(formData).map((name) => {
-        if(!formData[name]){
-          this.errors[name] = `Please enter team ${name}.`;
-          flag = false;
-        }
+        if(formData[name]) return;
+        this.errors[name] = `Please enter team ${name}.`;
+        flag = false;
       });
-
       return flag;
     },
 
@@ -232,8 +235,7 @@ module.exports = {
       if(!this.validation()) return;
 
       const formData = this.form;
-      this.form = {name: "",domain: "",icon: "",kind: "slack"};
-      this.errors = {name: "",domain: "",icon: ""};
+      this.resetForm();
 
       this.stores.TeamsStore.setTeams(
         this.stores.TeamsStore.getTeams().concat(
@@ -253,9 +255,7 @@ module.exports = {
     },
 
     hideModal: function(){
-      this.form   = {name: "",domain: "",icon: "",kind: "slack"};
-      this.errors = {name: "",domain: "",icon: ""};
-
+      this.resetForm();
       this.stores.ModalStore.setVisible(false);
     }
   }
