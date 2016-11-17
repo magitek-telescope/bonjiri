@@ -230,8 +230,7 @@ module.exports = {
       return flag;
     },
 
-    addTeam: function(e){
-      e.preventDefault();
+    addTeam: function(){
       if(!this.validation()) return;
 
       const formData = this.form;
