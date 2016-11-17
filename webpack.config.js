@@ -30,6 +30,10 @@ module.exports = {
           name: '[name].[ext]?[hash]'
         }
 	    },
+      {
+        test: /\.svg$/,
+        loader: 'url-loader?mimetype=image/svg+xml'
+      }
     ]
   },
   vue: {

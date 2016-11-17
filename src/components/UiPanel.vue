@@ -1,6 +1,6 @@
 <template>
   <div class="panel" v-on:click="showModal">
-    <img :src="'./assets/plus.svg'" alt="Add New Team">
+    <img src="assets/plus.svg" alt="Add New Team">
     <div class="info">
       <strong>Add New Team</strong>
     </div>
