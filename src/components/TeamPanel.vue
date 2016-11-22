@@ -6,6 +6,7 @@
       <span>{{ teamdata.domain }}</span>
     </div>
     <div class="badge" v-show="teamdata.unread"> </div>
+    <div class="panel-number">⌘{{count}}</div>
   </div>
 </template>
 
@@ -46,8 +47,10 @@
   font-size: 12px;
   opacity: 0.5;
 
-  width: 124px;
+  width: 106px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .panel .badge{
@@ -71,11 +74,20 @@
   background: linear-gradient(rgba(255,0,0,0.8), rgba(255,0,0,0.8));
   border: solid 1px #CB4141;
 }
+
+.panel-number{
+  position: absolute;
+  right: 6px;
+  bottom: 11px;
+
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+}
 </style>
 
 <script>
 module.exports = {
-  props: ["teamdata"],
+  props: ["count", "teamdata"],
   data: () => {
     return {
       stores: require("../stores/Stores.js")

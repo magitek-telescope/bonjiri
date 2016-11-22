@@ -1,8 +1,8 @@
 <template>
   <nav id="main-navigation" :style="'background:' + (activeTeam !== undefined ? activeTeam.color : '#4D394B;') ">
     <ul>
-      <li v-for="team in stores.TeamsStore.getTeams()">
-        <team-panel :teamdata="team"></team-panel>
+      <li v-for="(team, count) in stores.TeamsStore.getTeams()">
+        <team-panel :teamdata="team" :count="count+1"></team-panel>
       </li>
 
       <li class="panel ui-parts">
@@ -21,7 +21,7 @@ nav{
   overflow: auto;
 
   color: #fff;
-  transition: all 0.4s ease-out;
+  transition: all 0.2s ease-out;
 
   -webkit-user-select: none;
 
