@@ -75,13 +75,14 @@ module.exports = {
       );
     };
 
-    webview.addEventListener("new-window", openExternal);
+    webview.addEventListener("new-window", window.openExternal);
 
     webview.addEventListener("did-stop-loading", ()=>{
       webview.executeJavaScript(
-        "{color:$('#col_channels_bg').css('backgroundColor')}",
+        "{color:$('#col_channels_bg').css('backgroundColor') || false}",
         false,
         function(color){
+          if(color === false) return;
           const teamData = self.stores.TeamsStore.getTeams().map((team) => {
             if(team.id == self.teamdata.id) team.color = color;
             return team;
