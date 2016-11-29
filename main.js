@@ -67,8 +67,8 @@ function createWindow () {
 }
 
 app.on('ready', function () {
-  // const menu = Menu.buildFromTemplate(template)
-  // Menu.setApplicationMenu(menu)
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
   createWindow()
 })
 

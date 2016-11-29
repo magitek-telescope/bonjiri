@@ -1,5 +1,5 @@
 <template>
-  <div class="panel" :data-id="teamdata.id" v-on:click="switchTeam">
+  <div class="panel" :data-id="teamdata.id" :data-domain="teamdata.domain" :data-order="teamdata.order" v-on:click="switchTeam">
     <img :src="teamdata.icon || ''" alt="Team Icon">
     <div class="info">
       <strong>{{ teamdata.name }}</strong>
@@ -82,6 +82,10 @@
 
   color: rgba(255,255,255,0.5);
   font-size: 12px;
+}
+
+:not(.panel){
+  pointer-events: none;
 }
 </style>
 

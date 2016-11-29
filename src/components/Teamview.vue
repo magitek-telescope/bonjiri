@@ -1,5 +1,5 @@
 <template>
-  <div :class="isshow ? 'teamview show' : 'teamview hide'" :data-id="teamdata.id" :data-isdiscord="teamdata.domain.indexOf('discordapp') != -1 ? '1' : '0'">
+  <div :class="isshow ? 'teamview show' : 'teamview hide'" :data-id="teamdata.id" :data-isdiscord="teamdata.domain.indexOf('discordapp') != -1 ? '1' : '0'" draggable="false">
     <webview allowpopups autosize="on" :src="'https://'+teamdata.domain"></webview>
   </div>
 </template>
@@ -51,6 +51,7 @@ module.exports = {
   props: ["teamdata", "isshow"],
   data: () => {
     return {
+      beforeUnread: undefined,
       stores: require("../stores/Stores.js")
     }
   },
@@ -65,6 +66,9 @@ module.exports = {
         "{unread:document.title}",
         false,
         function(title){
+          if(self.beforeUnread !== undefined && self.beforeUnread == (title.slice(0,1) == "!") ) return;
+          self.beforeUnread = title.slice(0,1) == "!";
+
           self.stores.TeamsStore.setTeams(
             self.stores.TeamsStore.getTeams().map((team) => {
               if(team.id == self.teamdata.id) team.unread = title.slice(0,1) == "!";
